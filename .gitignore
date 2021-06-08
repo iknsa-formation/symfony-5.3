@@ -1,3 +1,6 @@
+.idea
+.vscode
+.DStore
 
 ###> symfony/framework-bundle ###
 /.env.local
