@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .btn-success {
+            background: blueviolet;
+            color: whitesmoke;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <span class="btn btn-info">Home button</span>
+    <span class="btn btn-success">Home button</span>
+{% endblock %}
