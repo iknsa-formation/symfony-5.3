@@ -5,9 +5,6 @@
 app:
   path: /
   controller: App\Controller\AppController::home
-app_about:
-  path: /about
-  controller: App\Controller\AppController::about
 app_contact:
   path: /contact
   controller: App\Controller\AppController::contact

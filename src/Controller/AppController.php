@@ -18,10 +18,7 @@ class AppController extends AbstractController
     {
         return $this->render('app/home.html.twig');
     }
-    public function about()
-    {
-        return $this->render('app/about.html.twig');
-    }
+
     public function contact()
     {
         return $this->render('app/contact.html.twig');
