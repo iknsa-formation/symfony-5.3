@@ -2,12 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <style>
-        .btn-success {
-            background: blueviolet;
-            color: whitesmoke;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('theme/css/blueviolet.css') }}">
 {% endblock %}
 
 {% block body %}
