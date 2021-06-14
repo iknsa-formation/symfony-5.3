@@ -2,9 +2,5 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <style>
-        .btn-success {
-            background: coral;
-        }
-    </style>
+    <link href="{{ asset('theme/css/coral.css') }}"  rel="stylesheet" />
 {% endblock %}
