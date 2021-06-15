@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ContactController extends AbstractController
 {
     /**
-     * @Route("/", name="contact_index", methods={"GET"})
+     * @Route("/list", name="contact_index", methods={"GET"})
      */
     public function index(ContactRepository $contactRepository): Response
     {
@@ -26,7 +26,7 @@ class ContactController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="contact_new", methods={"GET","POST"})
+     * @Route("/", name="contact_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
