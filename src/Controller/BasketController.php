@@ -15,14 +15,12 @@ class BasketController extends AbstractController
      */
     public function index(Request $request, ProductRepository $productRepository): Response
     {
-        $data = json_decode(file_get_contents('php://input'));
-
         $listBasket = [];
 
-        foreach ($data as $datum) {
+        foreach ($request->request as $data) {
             $listBasket[] = [
-                'product' => $productRepository->findOneBy(['id' => $datum->product]),
-                'quantity' => $datum->quantity
+                'product' => $productRepository->findOneBy(['id' => $data['product']]),
+                'quantity' => $data['quantity']
             ];
         }
 

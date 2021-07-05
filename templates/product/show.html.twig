@@ -54,7 +54,7 @@
 
                         <script>
 
-                            let basket = [];
+                            let basket = {};
                             document.querySelector('.add-to-basket-form').addEventListener(
                                 "submit", function (event) {
                                     event.preventDefault();
@@ -68,10 +68,14 @@
                                     document.querySelector('.price')
                                         .innerHTML = actualBasket + parseFloat(total);
 
-                                    basket.push({
-                                        product: {{ product.id }},
-                                        quantity: parseInt(data.get('quantity'))
-                                    });
+                                    if (basket[{{ product.id }}] === undefined) {
+                                        basket[{{ product.id }}] = {
+                                            product: {{ product.id }},
+                                            quantity: parseInt(data.get('quantity'))
+                                        };
+                                    } else {
+                                        basket[{{ product.id }}]['quantity'] = basket[{{ product.id }}]['quantity'] + parseInt(data.get('quantity'));
+                                    }
                                 }
                             )
 
