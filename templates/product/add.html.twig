@@ -1,22 +1,16 @@
 {% extends "base.html.twig" %}
 
 {% block title %}
-    Liste des produits
+    {{product_id}}
 {% endblock %}
 
 {% block body %}
-    {% for product in productRepo %}
-        {{product.name}}
-        {{product.price}}
-        {{product.description}}
-        {{product.createdAt | date("m/d/Y")}}
-        <article>
+    <article>
               <div class="row">
-
                 <div class="span8">
                   <div class="post-slider">
                     <div class="post-heading">
-                      <h3><a href="#">{{product.name}}</a></h3>
+                      <h3><a href="#">This is an example of slider post format</a></h3>
                     </div>
                     <div class="clear"></div>
                     <!-- start flexslider -->
@@ -42,19 +36,19 @@
                   <div class="meta-post">
                     <ul>
                       <li><i class="icon-picture"></i></li>
-                      <li>By <a href="#" class="author">{{product.createdBy}}</a></li>
-                      <li>On <a href="#" class="date">{{product.createdAt | date("m/d/Y")}}</a></li>
+                      <li>By <a href="#" class="author">Admin</a></li>
+                      <li>On <a href="#" class="date">10 Jun, 2013</a></li>
                       <li>Tags: <a href="#">Design</a>, <a href="#">Blog</a></li>
                     </ul>
                   </div>
                   <div class="post-entry">
                     <p>
-                      {{product.description}}
+                      Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei nibh consectetuer, semper laoreet perfecto ad qui, est rebum nulla argumentum ei. Fierent adipisci iracundia est ei, usu timeam persius
+                      ea. Usu ea justo malis, pri quando everti electram ei, ex homero omittam salutatus...
                     </p>
                     <a href="#" class="readmore">Read more <i class="icon-angle-right"></i></a>
                   </div>
                 </div>
               </div>
             </article>
-    {% endfor %}
 {% endblock %}
