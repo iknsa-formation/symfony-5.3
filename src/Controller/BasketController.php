@@ -24,17 +24,19 @@ class BasketController extends AbstractController
             $request->getSession()->set('listBasket', []);
         }
 
-        if (!isset($basket[$request->request->get('product')])) {
-            $basket[$request->request->get('product')] = [
-                'product' => $productRepository->findOneBy(
-                    ['id' => $request->request->get('product')]
-                ),
-                'quantity' => $request->request->get('quantity')
-            ];
-        } else {
-            $basket[$request->request->get('product')]['quantity'] =
-                (int) $basket[$request->request->get('product')]['quantity'] +
-                (int) $request->request->get('quantity');
+        if ($request->request->get('product')) {
+            if (!isset($basket[$request->request->get('product')])) {
+                $basket[$request->request->get('product')] = [
+                    'product' => $productRepository->findOneBy(
+                        ['id' => $request->request->get('product')]
+                    ),
+                    'quantity' => $request->request->get('quantity')
+                ];
+            } else {
+                $basket[$request->request->get('product')]['quantity'] =
+                    (int) $basket[$request->request->get('product')]['quantity'] +
+                    (int) $request->request->get('quantity');
+            }
         }
 
         $request->getSession()->set('listBasket', $basket);
