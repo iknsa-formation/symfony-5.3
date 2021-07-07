@@ -38,9 +38,8 @@
 
                         <p>{{ product.description }}</p>
 
-                        <form class="add-to-basket-form">
+                        <form action="{{ path('basket') }}" method="post">
                         <div>
-                            <input type="hidden" name="price" value="{{ product.price }}">
                             <input type="hidden" name="product" value="{{ product.id }}">
                             <div>
                                 <label for="quantity">Quantité</label>
@@ -51,35 +50,6 @@
                             </div>
                         </div>
                         </form>
-
-                        <script>
-
-                            let basket = {};
-                            document.querySelector('.add-to-basket-form').addEventListener(
-                                "submit", function (event) {
-                                    event.preventDefault();
-                                    const data = new FormData(this);
-
-                                    const actualBasket = parseFloat(document.querySelector('.price')
-                                    .innerHTML);
-
-                                    const total = parseFloat(data.get('price')) * parseInt(data.get('quantity'));
-
-                                    document.querySelector('.price')
-                                        .innerHTML = actualBasket + parseFloat(total);
-
-                                    if (basket[{{ product.id }}] === undefined) {
-                                        basket[{{ product.id }}] = {
-                                            product: {{ product.id }},
-                                            quantity: parseInt(data.get('quantity'))
-                                        };
-                                    } else {
-                                        basket[{{ product.id }}]['quantity'] = basket[{{ product.id }}]['quantity'] + parseInt(data.get('quantity'));
-                                    }
-                                }
-                            )
-
-                        </script>
                     </article>
 
                     <div class="row">

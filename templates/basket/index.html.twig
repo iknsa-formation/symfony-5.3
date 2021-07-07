@@ -1,20 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BasketController!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    {% for item in listBasket %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/bookie/src/Controller/BasketController.php'|file_link(0) }}">src/Controller/BasketController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/bookie/templates/basket/index.html.twig'|file_link(0) }}">templates/basket/index.html.twig</a></code></li>
-    </ul>
-</div>
+                        <article>
+                            <div class="row">
+
+                                <div class="span8">
+                                    <div class="post-image">
+                                        <div class="post-heading">
+                                            <h3>{{ item.product.name }}</h3>
+                                        </div>
+
+                                        <img src="img/dummies/blog/img1.jpg" alt="" />
+                                    </div>
+                                    <div class="meta-post">
+                                        <ul>
+                                            <li><i class="icon-file"></i></li>
+                                            <li>By <a href="#" class="author">{{ item.product.createdBy.email }}</a></li>
+                                            <li>On <a href="#" class="date">{{ item.product.createdAt | date('d-m-Y') }}</a></li>
+                                            <li>Prix: {{ item.product.price }}</li>
+                                            <li>Quantity: {{ item.quantity }}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="post-entry">
+                                        <p>{{ item.product.description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

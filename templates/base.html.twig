@@ -87,10 +87,12 @@
                                         <a href="{{ path('contact_new') }}">Contact </a>
                                     </li>
                                     <li>
-                                        <span class="btn btn-theme btn-rounded basket-btn">
+                                        <form action="/basket" method="post">
+                                        <button class="btn btn-theme btn-rounded basket-btn">
                                             <i class="icon-shopping-cart icon-white"></i>
                                             <span class="price">0.00</span> €
-                                        </span>
+                                        </button>
+                                        </form>
                                     </li>
                                 </ul>
                             </nav>
@@ -105,34 +107,6 @@
 
     {% block body %}{% endblock %}
 
-    <script>
-        serialize = function(obj, prefix) {
-            var str = [],
-                p;
-            for (p in obj) {
-                if (obj.hasOwnProperty(p)) {
-                    var k = prefix ? prefix + "[" + p + "]" : p,
-                        v = obj[p];
-                    str.push((v !== null && typeof v === "object") ?
-                        serialize(v, k) :
-                        encodeURIComponent(k) + "=" + encodeURIComponent(v));
-                }
-            }
-            return str.join("&");
-        }
-
-        document.querySelector('.basket-btn').addEventListener('click', function (event) {
-            event.preventDefault();
-
-            const basketData = serialize(basket);
-
-            fetch('/basket', {
-                method: 'POST',
-                body: basketData,
-                headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
-            })
-        })
-    </script>
     <footer>
         <div class="container">
             <div class="row">
