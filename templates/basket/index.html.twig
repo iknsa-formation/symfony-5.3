@@ -7,9 +7,7 @@
             <div class="row">
                 <div class="span12">
 
-                    <form action="{{ path('invoice') }}" method="post">
-                        <input type="submit" class="btn btn-success">
-                    </form>
+                    {{ form(formUserAddress) }}
 
                     {% for item in listBasket %}
 

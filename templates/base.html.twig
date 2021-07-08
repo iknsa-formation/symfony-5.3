@@ -87,12 +87,16 @@
                                         <a href="{{ path('contact_new') }}">Contact </a>
                                     </li>
                                     <li>
-                                        <form action="/basket" method="post">
-                                        <button class="btn btn-theme btn-rounded basket-btn">
+                                        <a href="{{ path('basket') }}" class="btn btn-theme btn-rounded basket-btn">
                                             <i class="icon-shopping-cart icon-white"></i>
-                                            <span class="price">0.00</span> €
-                                        </button>
-                                        </form>
+                                            {% set sum = 0 %}
+                                            {% if app.session.get('listBasket') %}
+                                                {% for item in app.session.get('listBasket') %}
+                                                    {% set sum = sum + (item.product.price * item.quantity) %}
+                                                {% endfor %}
+                                            {% endif %}
+                                            <span class="price">{{ sum }}</span> €
+                                        </a>
                                     </li>
                                 </ul>
                             </nav>

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Form\UserAddressListType;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,9 +42,14 @@ class BasketController extends AbstractController
 
         $request->getSession()->set('listBasket', $basket);
 
+        $form = $this->createForm(UserAddressListType::class, [], [
+            'action' => $this->generateUrl('invoice_index')
+        ]);
+        $form->handleRequest($request);
+
         return $this->render('basket/index.html.twig', [
-            'controller_name' => 'BasketController',
-            'listBasket' => $basket
+            'listBasket' => $basket,
+            'formUserAddress' => $form->createView()
         ]);
     }
 }
