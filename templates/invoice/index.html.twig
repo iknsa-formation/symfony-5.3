@@ -3,6 +3,11 @@
 {% block title %}Hello InvoiceController!{% endblock %}
 
 {% block body %}
+
+    <div class="jumbotron">
+        <a href="{{ path('invoice_download', {invoice: invoice.id}) }}"
+           class="btn btn-lg btn-theme">Télécharger</a>
+    </div>
     <h6>N° de facture: {{ invoice.id }}</h6>
     <h6>Created at {{ invoice.date | date('d-m-Y') }}</h6>
 
